@@ -1,0 +1,14 @@
+package pp;
+
+public class Wave {
+	public Device(String brand) {
+		System.out.println(brand);
+	}
+	public Device(String CPU, String GPU) {
+		
+	}
+}
+
+class Laptop{
+	
+}

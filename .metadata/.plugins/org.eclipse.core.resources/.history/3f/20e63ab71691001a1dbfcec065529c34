@@ -1,0 +1,28 @@
+package car;
+public class Student {
+public String name; // Student’s name.
+public double test1, test2, test3; // Grades on three tests.
+public double getAverage() { // compute average test grade
+return (test1 + test2 + test3) / 3;
+}
+static void dontChange(int z) { 
+	 z = 42; 
+	} 
+static public void change(Student s) {
+	s.name = "Fred";	
+}
+@SuppressWarnings("null")
+public static void main(String [] args) {
+	
+		int x = 17; 
+		dontChange(x); 
+		System.out.println(x);
+		Student stu = null;	
+		stu.name = "Jane";
+		change(stu);
+		System.out.println(stu.name);
+
+
+	
+}
+} // end of class Student

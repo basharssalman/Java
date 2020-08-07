@@ -1,0 +1,64 @@
+import java.util.Arrays;
+
+/**
+ * Benchmarking class: demonstrating two different searching algorithms
+ * for two identical arrays, the first algorithm is the insertion sort 
+ * that is copied from the text-book, the second algorithm is used with
+ * the function sort(int []) from the class Arrays
+ * @author Student
+ * **/
+public class Benchmarking {
+
+	static void insertionSort(int[] A) {
+		// Sort the array A into increasing order.
+		int itemsSorted; // Number of items that have been sorted so far.
+		for (itemsSorted = 1; itemsSorted < A.length; itemsSorted++) {
+			// Assume that items A[0], A[1], ... A[itemsSorted-1]
+			// have already been sorted. Insert A[itemsSorted]
+			// into the sorted part of the list.
+			int temp = A[itemsSorted]; // The item to be inserted.
+			int loc = itemsSorted - 1; // Start at end of list.
+			while (loc >= 0 && A[loc] > temp) {
+				A[loc + 1] = A[loc]; // Bump item from A[loc] up to loc+1.
+				loc = loc - 1; // Go on to next location.
+			}
+			A[loc + 1] = temp; // Put temp in last vacated space.
+		}
+	} // (Eck, 2019, pp.361-362)
+
+	public static void main(String[] args) {
+		/**
+		 * here we have three constants, we can 
+		 */
+		/*final int firstSize = 1000;
+		final int secondSize = 10000;
+		final int thirdSize = 100000;*/
+		final int [] size = {1000, 10000, 100000};
+		
+		int[] firstArray = new int[size[0]];
+		int[] secondArray;
+		
+		int i = 0;
+		for (int j = size[0]; j <= size[2]; j++) {
+		while (i < firstArray.length) {
+
+			firstArray[i] = (int) Integer.MAX_VALUE * (int) (1000 * Math.random());
+			i++;
+		}}
+		
+		secondArray = firstArray;
+
+		long startTime = System.currentTimeMillis();
+		insertionSort(firstArray);
+		long runTime = System.currentTimeMillis() - startTime;
+		System.out.println(Arrays.toString(firstArray));
+		System.out.println(runTime);
+
+		startTime = System.currentTimeMillis();
+		Arrays.sort(secondArray);
+		runTime = System.currentTimeMillis() - startTime;
+		System.out.println(Arrays.toString(secondArray));
+		System.out.println(runTime);
+		}
+	
+}
